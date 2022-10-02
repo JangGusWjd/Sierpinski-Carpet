@@ -1,0 +1,65 @@
+<!-- 교과목: 컴퓨터그래픽스(SW)
+학과: 소프트웨어학과
+학번: 32203928
+이름: 장현정
+Sierpinski Carpet 구현하기: rectangle.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Sierpinski carpet</title>
+    <!-- 쉐이더가 자바스크립트로 해석되지 않게 하기 위해 type을 임의로 지정 -->
+    <!-- 쉐이더 변수 종류 중 attribute로 4행 배열인 aVertexPosition생성 -->
+    <!-- 버텍스 쉐이더에서 설정을 담당하는 변수에 대입 -->
+    <script id="vertex-shader" type="x-shader/x-vertex">
+      attribute vec4 aVertexPosition;
+
+      void
+      main()
+      {
+          gl_Position = aVertexPosition;
+      }
+    </script>
+
+    <!-- 중간 정밀도, 진한 보라색 배경으로 설정 -->
+    <script id="fragment-shader" type="x-shader/x-fragment">
+      precision mediump float;
+
+      void
+      main()
+      {
+          gl_FragColor = vec4( 0.5, 0.0, 0.5, 1.0 );
+      }
+    </script>
+
+    <!-- webgl-utils.js, initShaders.js, MV.js 파일들은
+    https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/CODE/
+    의 gasket프로그램 내부 파일들을 기반으로 참고하여 실행하였다. -->
+    <script src="./common/webgl-utils.js"></script>
+    <script src="./common/initShaders.js"></script>
+    <script src="./common/MV.js"></script>
+    <!-- Sierpinski Carpet을 그리기 위한 js 파일 -->
+    <script src="rectangle.js"></script>
+  </head>
+  <body>
+    <!-- 사용자에게 몇회를 반복할지 입력받기 위한 슬라이드바 생성 -->
+    <div>
+      <strong
+        >recursive steps 0
+        <input
+          id="slider"
+          type="range"
+          min="0"
+          max="5"
+          step="1"
+          value="0"
+        />5</strong
+      >
+    </div>
+    <!-- WebGL이 최종적으로 그린 결과들을 보여주기 위한 canvas 생성 -->
+    <canvas id="canvas" width="600" height="600">
+      브라우저가 HTML5 캔버스를 지원하지 않습니다.
+    </canvas>
+  </body>
+</html>
