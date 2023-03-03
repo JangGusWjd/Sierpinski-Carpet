@@ -1,9 +1,3 @@
-/**  교과목: 컴퓨터그래픽스(SW)
-     학과: 소프트웨어학과
-     학번: 32203928
-     이름: 장현정
-     Sierpinski Carpet 구현하기: rectangle.js **/
-
 let gl;
 let points = []; // 정점을 저장하는 빈 배열 points 생성
 let divideNum = 0; // 사각형을 몇개로 나눌지 저장하는 변수 초기화
